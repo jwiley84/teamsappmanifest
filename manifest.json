@@ -1,0 +1,190 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.5/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.5",
+  "version": "1.0.0",
+  "id": "9bdb1afd-7450-47db-b513-06e8bf4423d4",
+  "packageName": "com.teams.sample.teamsconversationbot",
+  "developer": {
+    "name": "teamsConversationBot",
+    "websiteUrl": "https://www.microsoft.com",
+    "privacyUrl": "https://www.teams.com/privacy",
+    "termsOfUseUrl": "https://www.teams.com/termsofuser"
+  },
+  "icons": {
+    "outline": "icon-outline.png",
+    "color": "icon-color.png"
+  },
+  "name": {
+    "short": "AllTheThingsTeams",
+    "full": "AllTheThingsTeams"
+  },
+  "description": {
+    "short": "AllTheThingsTeams",
+    "full": "AllTheThingsTeams"
+  },
+  "accentColor": "#FFFFFF",
+  "composeExtensions": [
+    {
+      "botId": "9bdb1afd-7450-47db-b513-06e8bf4423d4",
+      "canUpdateConfiguration": true,
+      "commands": [
+        //searchQuery
+        {
+          "id": "searchQuery",
+
+          "context": [ "compose", "commandBox", "message" ],
+          "description": "Test command to run query",
+          "title": "Search Command",
+          "type": "query",
+          "parameters": [
+            {
+              "name": "searchQuery",
+              "title": "Search Query",
+              "description": "Your search query",
+              "inputType": "text"
+            }
+          ]
+        },
+        //createCard
+        {
+          "id": "createCard",
+          "type": "action",
+          "context": [ "compose" ],
+          "description": "Command to run action to create a Card from Compose Box",
+          "title": "Create Card",
+          "parameters": [
+            {
+              "name": "title",
+              "title": "Card title",
+              "description": "Title for the card",
+              "inputType": "text"
+            },
+            {
+              "name": "subTitle",
+              "title": "Subtitle",
+              "description": "Subtitle for the card",
+              "inputType": "text"
+            },
+            {
+              "name": "text",
+              "title": "Text",
+              "description": "Text for the card",
+              "inputType": "textarea"
+            }
+          ]
+        },
+        //shareMessage
+        {
+          "id": "shareMessage",
+          "type": "action",
+          "context": [ "message" ],
+          "description": "Test command to run action on message context (message sharing)",
+          "title": "Share Message",
+          "parameters": [
+            {
+              "name": "includeImage",
+              "title": "Include Image",
+              "description": "Include image in Hero Card",
+              "inputType": "toggle"
+            }
+          ]
+        },
+        //createWithPreview
+        {
+          "id": "createWithPreview",
+          "type": "action",
+          "title": "Create Card",
+          "description": "Example of creating a Card",
+          "initialRun": false,
+          "fetchTask": true,
+          "context": [
+            "commandBox",
+            "compose",
+            "message"
+          ],
+          "parameters": [
+            {
+              "name": "param",
+              "title": "param",
+              "description": ""
+            }
+          ]
+        },
+        //signOutCommand
+        {
+          "id": "SignOutCommand",
+          "type": "action",
+          "title": "Sign Out",
+          "description": "Sign out from authenticated services.",
+          "initialRun": false,
+          "fetchTask": true,
+          "context": [
+            "commandBox",
+            "compose"
+          ],
+          "parameters": [
+            {
+              "name": "param",
+              "title": "param",
+              "description": ""
+            }
+          ]
+        }
+      ],
+      "messageHandlers": [
+        {
+          "type": "link",
+          "value": {
+            "domains": [
+              "*.botframework.com"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bots": [
+    {
+      "botId": "9bdb1afd-7450-47db-b513-06e8bf4423d4",
+      "scopes": [
+        "personal",
+        "groupchat",
+        "team"
+      ],
+      "supportsFiles": true,
+      "isNotificationOnly": false,
+      "commandLists": [
+        {
+          "scopes": [
+            "personal",
+            "groupchat",
+            "team"
+          ],
+          "commands": [
+            {
+              "title": "MentionMe",
+              "description": "Sends message with @mention of the sender"
+            },
+            {
+              "title": "Show Welcome",
+              "description": "Shows the welcome card"
+            },
+            {
+              "title": "MessageAllMembers",
+              "description": "Send 1 to 1 message to all members of the current conversation"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "*.githubusercontent.com",
+    "*.ngrok.io",
+    "*.botframework.com"
+  ]
+}
